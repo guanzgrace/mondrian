@@ -1,14 +1,15 @@
 // set the canvas to not repeat, background white
 function setup() {
   createCanvas(displayWidth, displayHeight);
-  console.log("DisplayWidth:" + displayWidth);
-  console.log("DisplayHeight: " + displayHeight);
+  console.log("Display Width:" + displayWidth);
+  console.log("Display Height: " + displayHeight);
   noLoop();
   background(255);
 }
 
 // draw the mondrian!
 function draw() {
+  console.log("New draw function called.");
   strokeWeight(5);
   var r;
 
@@ -35,14 +36,14 @@ function draw() {
   var vFilled = [false, false, false, false, false, false, false];
   var hFilled = [false, false, false, false,false];
   var numFilled = 0;
-  while (numFilled < 1) {
+  while (numFilled < 2) {
     fillColor();  
     // rect syntax: start point (x, y) (length x, length y).
     // calculate indexes
-    var startX = Math.floor(random(numVerticalLines - 1));
-    var startY = Math.floor(random(numHorizontalLines - 1));
-    var endX = Math.floor(random(numVerticalLines - startX) + numVerticalLines - 1);
-    var endY = Math.floor(random(numHorizontalLines - startY) + numHorizontalLines - 1);
+    var startX = Math.floor(random(numVerticalLines - 2));
+    var startY = Math.floor(random(numHorizontalLines - 2));
+    var endX = Math.floor(random(numVerticalLines - startX - 1)) + startX + 1;
+    var endY = Math.floor(random(numHorizontalLines - startY - 1)) + startY + 1;
     console.log(startX);
     console.log(startY);
     console.log(endX);
@@ -68,10 +69,10 @@ function draw() {
         vFilled[endX] = true;
         endX = endX - 1;
       }
-      while (endY > startY) {
+      /**while (endY > startY) {
         hFilled[endY] = true;
         endY = endY - 1;
-      }
+      }**/
       numFilled++;
       console.log(vFilled);
       console.log(hFilled);
@@ -82,13 +83,13 @@ function draw() {
 
 // fill the color red yellow or blue
 function fillColor() {
-  var randomColor = random(3);
+  var randomColor = Math.floor(random(3));
   //console.log(randomColor);
-  if (randomColor < 1) {
+  if (randomColor == 0) {
     fill('#ff0000'); // red
-  } else if (randomColor < 2) {
+  } else if (randomColor == 1) {
     fill('#ffff00'); // yellow
-  } else if (randomColor < 3) {
+  } else if (randomColor == 2) {
     fill('#0000ff'); // blue
   }
 }
