@@ -130,5 +130,14 @@ function mousePressed() {
   for (var i = 0; i < numvL; i++) {
     indexFilled[i] = new Array(numhL);
   }
+  // reset it to always be true
+  var i;
+  var j;
+  while (i < numvL) {
+    while (j < numhL) {
+      indexFilled[i][j] = true;
+    }
+  }
+
   redraw();
 }
