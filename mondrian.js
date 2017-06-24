@@ -118,5 +118,17 @@ function fillColor() {
 // reset the canvas if mouse is pressed
 function mousePressed() {
   clear();
+  // reset the other numbers
+  numvL = Math.floor(Math.random(5)) + 6; // min: 6, max: 10
+  vL = new Array(numvL + 1);
+  numhL = Math.floor(Math.random(5)) + 4; // min: 4, max: 8
+  hL = new Array(numhL + 1);
+
+  // a coordinate (x, y) is filled if the rectangle to its bottom right is
+  // also filled.
+  indexFilled = new Array(numvL);
+  for (var i = 0; i < numvL; i++) {
+    indexFilled[i] = new Array(numhL);
+  }
   redraw();
 }
